@@ -6,7 +6,7 @@
 - [x] Extraer texto de .DOCX
 - [x] Extraer texto de .TXT
 - [ ] Extraer texto de vídeos MP3, MP4
-- [ ] Chatear con documentos de texto
+- [ ] Chatear con documentos de texto (podría ser una inteligencia artificial gratuita de huggingface)
 
 # WEB
 
@@ -14,7 +14,7 @@
 
 # Diseño
 
-- [ ] Usar shadcn/ui para el diseño
+- [x] Usar shadcn/ui para el diseño
 - [ ] Crear un diseño responsive
 - [ ] Crear un diseño con tailwindcss
 - [ ] Diseño responsive
