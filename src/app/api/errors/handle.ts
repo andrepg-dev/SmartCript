@@ -1,6 +1,6 @@
 const errors: Record<string, string> = {
-  'YoutubeTranscriptDisabledError': 'Transcript is disabled on this video',
-}
+  YoutubeTranscriptDisabledError: 'Transcript is disabled on this video',
+};
 
 export function YoutubeTranscriptError(message: string) {
   if (message.includes('Transcript is disabled on this video')) {
