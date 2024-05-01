@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import mammoth from 'mammoth'
+import mammoth from 'mammoth';
 
 export async function wordToText(file: File): Promise<string> {
   return new Promise((resolve, reject) => {
@@ -14,13 +14,13 @@ export async function wordToText(file: File): Promise<string> {
           const result = await mammoth.extractRawText({ arrayBuffer });
           resolve(result.value);
         } catch (error: any) {
-          console.error("Error extracting text from DOC/DOCX:", error);
+          console.error('Error extracting text from DOC/DOCX:', error);
           reject(error);
         }
       };
 
       reader.readAsArrayBuffer(file);
     }
-    return "wait a moment..."
-  })
+    return 'wait a moment...';
+  });
 }

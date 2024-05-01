@@ -2,12 +2,12 @@ export async function TextToText(file: File): Promise<string> {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.onload = () => {
-      resolve(reader.result as string)
-    }
+      resolve(reader.result as string);
+    };
     reader.onerror = () => {
-      reject(reader.error)
-    }
+      reject(reader.error);
+    };
 
-    reader.readAsText(file)
-  })
+    reader.readAsText(file);
+  });
 }
