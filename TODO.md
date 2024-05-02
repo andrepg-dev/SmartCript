@@ -28,6 +28,8 @@
 
 # Mails
 
+- [x] API para enviar mails
+- [ ] Usuarios que se suscriban a la página para recibir mails (almacenar en base de datos)
 - [ ] Enviar mails con mailgun
 
 # Pagos

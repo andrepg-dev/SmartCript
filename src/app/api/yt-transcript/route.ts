@@ -1,5 +1,5 @@
 import { TranscriptResponse, YoutubeTranscript } from 'youtube-transcript';
-import { YoutubeTranscriptError } from './errors/handle';
+import { YoutubeTranscriptError } from '../errors/handle';
 import getVideoId from 'get-video-id';
 
 export async function GET(req: Request) {
