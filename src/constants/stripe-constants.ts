@@ -1,0 +1,4 @@
+export const STRIPE_CONSTANTS = {
+  STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY ?? '',
+  STRIPE_SIGN_IN_SECRET: process.env.STRIPE_SIGN_IN_SECRET ?? '',
+}
