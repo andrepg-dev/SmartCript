@@ -47,6 +47,11 @@
 - [ ] Guardar los usuarios con suscripciones en la base de datos
 - [ ] Tener un historial de los documentos transcritos por el usuario
 
+1. Productos a vender
+2. Usuarios con su respectiva información
+3. Historial de transcripciones por usuario
+4. Suscripciones con: fecha de expiración, producto comprado, precio, usuario
+
 # Deploy
 
 - [ ] Hacer deploy en Vercel
