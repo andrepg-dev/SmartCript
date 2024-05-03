@@ -12,9 +12,8 @@ export async function POST(req: NextRequest) {
   // Body debe de tener to, text y subject
   if (!to || !text || !subject) {
     return NextResponse.json({
-      status: 400,
       error: '{ to, text, subject } are required'
-    });
+    }, { status: 400 });
   }
 
   // Enviar email
