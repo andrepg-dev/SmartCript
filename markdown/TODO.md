@@ -5,7 +5,8 @@
 - [x] Extraer el texto de archivos .PDFs
 - [x] Extraer texto de .DOCX
 - [x] Extraer texto de .TXT
-- [ ] Extraer texto de vídeos MP3, MP4
+- [ ] Extraer texto de vídeos .MP4
+- [ ] Extraer texto de audios .MP3
 
 # Backend
 
