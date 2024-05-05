@@ -19,10 +19,10 @@ export class DBUsers {
     return rows;
   }
 
-  public async createUser({ id, fullName, email, password, suscriptionId }: DBUser) {
+  public async createUser({ id, fullName, email, password, suscriptionId, avatar }: DBUser) {
     const { rows } =
-      await this.makeQuery('INSERT INTO users (id, fullName, email, password, suscription_id) VALUES ($1, $2, $3, $4, $5)',
-        [id, fullName, email, password, suscriptionId]);
+      await this.makeQuery('INSERT INTO users (id, fullName, email, password, suscription_id, avatar) VALUES ($1, $2, $3, $4, $5, $6)',
+        [id, fullName, email, password, suscriptionId, avatar]);
     return rows;
   }
 }
