@@ -34,8 +34,8 @@
 
 # Pagos
 
-- [ ] Usar stripe para pagos
-- [ ] Poner tarjeta de crédito para pagos
+- [x] Usar stripe para pagos
+- [x] Poner tarjeta de crédito para pagos
 
 # Tests
 
@@ -51,6 +51,10 @@
 2. Usuarios con su respectiva información
 3. Historial de transcripciones por usuario
 4. Suscripciones con: fecha de expiración, producto comprado, precio, usuario
+
+# Cors
+
+- [ ] Configurar cors en el servidor para que la API solo se pueda acceder desde la página web
 
 # Deploy
 
