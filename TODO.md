@@ -26,6 +26,10 @@
 - [ ] Diseño de logo
 - [ ] Convertir logo a favicon
 
+# Avatar
+
+- [ ] Editar los avatares, que también se pueda elegir el background
+
 # Mails
 
 - [x] API para enviar mails
