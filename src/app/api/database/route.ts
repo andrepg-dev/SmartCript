@@ -13,6 +13,7 @@ import { gen_random_uuid } from '@/services/database/gen_uuid';
 -- 	EMAIL VARCHAR(255) NOT NULL UNIQUE,
 -- 	PASSWORD VARCHAR(255),
 -- 	SUSCRIPTION_ID VARCHAR(50),
+-- 	AVATAR VARCHAR(255) DEFAULT 'https://avatar.png',
 -- 	CREATED_AT DATE DEFAULT CURRENT_DATE
 -- );
 
@@ -31,6 +32,7 @@ export async function GET(): Promise<Response> {
     id: uuid,
     fullName: 'horik',
     email: 'leo@gmail.com',
+    avatar: 'https://avatar.png',
     password: 'casaca',
     suscriptionId: '1883_32348'
   }
