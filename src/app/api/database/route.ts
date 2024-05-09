@@ -39,7 +39,7 @@ export async function GET(): Promise<Response> {
   }
 
   await new DBUsers().createUser(newUser).catch(err => console.log('Ha ocurrido un error'));
-
+ 
   // Obtener todos los usuarios
   const users = await new DBUsers().getUsers();
 
