@@ -1,7 +1,7 @@
 
 import { connection } from '@/utils/database'
 import { DBUsers } from '@/services/database/users'
-import { DBUser as IDBusers } from '@/interfaces/db-user'
+import { DBUser as IDBusers, UserSuscription } from '@/interfaces/db-user'
 import { gen_random_uuid } from '@/services/database/gen_uuid';
 
 /**
@@ -31,16 +31,17 @@ export async function GET(): Promise<Response> {
   const newUser: IDBusers = {
     id: uuid,
     fullName: 'horik',
-    email: 'leo@gmail.com',
+    email: 'usersuscriptionPREMIUM@gmail.com',
     avatar: 'https://avatar.png',
-    password: 'casaca',
-    suscriptionId: '1883_32348'
+    password: 'cortala farmi',
+    suscriptionId: UserSuscription.PREMIUM,
+    avatarColor: 'bg-blue-300'
   }
 
-  await new DBUsers().createUser(newUser);
+  await new DBUsers().createUser(newUser).catch(err => console.log('Ha ocurrido un error'));
 
   // Obtener todos los usuarios
   const users = await new DBUsers().getUsers();
 
-  return Response.json({ users }) // Verificar si el servidor está funcionando
+  return Response.json(users) // Verificar si el servidor está funcionando
 } 
