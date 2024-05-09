@@ -12,5 +12,6 @@ export interface DBUser {
   avatarColor?: string;
   password: string;
   created_at?: string;
+  payment_date: string | null;
   suscriptionId: UserSuscription;
 }
