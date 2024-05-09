@@ -17,9 +17,10 @@
 
 1. Productos a vender ✅
 2. Usuarios con su respectiva información ✅
-3. Historial de documentos transcritos ✖️
-4. Historial de compras ✖️
-5. Suscripciones con: fecha de expiración, producto comprado, precio, usuario ✅
+3. Historial de documentos transcritos ✅
+4. guardar el tipo de documento transcripto (pdf, docx, txt, youtube, mp4, mp3) y el texto transcripto ✅
+5. Historial de compras ✖️
+6. Suscripciones con: fecha de expiración, producto comprado, precio, usuario ✅
 
 # Mails
 
@@ -48,6 +49,9 @@
 - [x] Configurar cors en el servidor para que la API solo se pueda acceder desde la página web
 
 # IA
+
+<!-- Tomar en cuenta que el input de chatgpt solo acepta como máximo 30,000 carácteres -->
+
 - [ ] Chatear con documentos de texto (podría ser una inteligencia artificial gratuita de huggingface)
 - [ ] Chat con la IA acerca el contenido de los documentos
 
@@ -69,4 +73,3 @@
 - [ ] Crearse una cuenta en TikTok que hable de la aplicación
 - [ ] Crear una cuenta en Instagram
 - [ ] Crear una cuenta en Twitter
-
