@@ -22,7 +22,11 @@ export default function HeaderNavigation() {
         </div>
         <ThemeButton />
 
-        <ProfileDropdown avatar_url="/avatars/20.png" avatarBgColor="bg-purple-500" fullName="Andre Sebastian Ponce Garcia" email="andreponce417@gmail.com" />
+        <ProfileDropdown
+          avatar_url="/avatars/20.png"
+          avatarBgColor="bg-purple"
+          fullName="Andre Sebastian Ponce Garcia"
+          email="andreponce417@gmail.com" />
       </div>
     </header>
   )
