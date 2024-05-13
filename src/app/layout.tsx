@@ -1,10 +1,11 @@
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import './globals.css';
 import { ThemeProvider } from '@/components/theme/theme-provider';
 import { TooltipProvider } from '@/components/ui/tooltip';
+import { GeistSans } from 'geist/font/sans';
 
-const inter = Inter({ subsets: ['latin'] });
+import HeaderNavigation from '@/components/project/navigation/header';
+import type { Metadata } from 'next';
+
+import './globals.css';
 
 export const metadata: Metadata = {
   title: 'SmartCript - Home',
@@ -18,14 +19,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={inter.className}>
+      <body className={`${GeistSans.className}`}>
         <TooltipProvider>
           <ThemeProvider
             attribute="class"
-            forcedTheme="dark"
             enableSystem
-            disableTransitionOnChange
+
           >
+            <HeaderNavigation />
             {children}
           </ThemeProvider>
         </TooltipProvider>
