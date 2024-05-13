@@ -12,7 +12,6 @@ import {
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
 import { ListItem } from './list-item';
-import { Button } from '@/components/ui/button';
 
 const components: {
   title: string;
