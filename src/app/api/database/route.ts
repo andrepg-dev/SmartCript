@@ -47,7 +47,7 @@ export async function GET(): Promise<Response> {
   newUser.email = 'otroemail@gmail.com'
   newUser.payment_date = null;
   newUser.suscriptionId = UserSuscription.FREE;
-  newUser.payment_date = '2021-10-10';
+  newUser.payment_date = null;
 
   await new DBUsers().createUser(newUser).catch(err => console.log('usuario duplicado'));
 
