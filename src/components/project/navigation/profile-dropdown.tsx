@@ -1,3 +1,5 @@
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -5,12 +7,9 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-
-import { HomeIcon, LayoutDashboard, LogOut, Settings } from 'lucide-react'
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
+} from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
+import { HomeIcon, LayoutDashboard, LogOut, Settings } from 'lucide-react';
 
 interface ProfileDropdownProps {
   avatar_url: string;
