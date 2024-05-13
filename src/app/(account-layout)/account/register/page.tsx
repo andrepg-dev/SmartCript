@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import ButtonNextAuth from "@/components/project/account/login-button"
 
 export default function RegisterForm() {
   return (
@@ -52,9 +53,9 @@ export default function RegisterForm() {
           <Button type="submit" className="w-full">
             Crear cuenta
           </Button>
-          <Button variant="outline" className="w-full">
+          <ButtonNextAuth>
             Registrarse con Google
-          </Button>
+          </ButtonNextAuth>
         </div>
         <div className="mt-4 text-center text-sm">
           Ya tienes una cuenta?{" "}
