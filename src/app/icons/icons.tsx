@@ -17,3 +17,9 @@ export const IconLinkedin = ({ className }: { className: string }) => {
     <svg className={cn('fill-current', className)} viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="m100.28 448h-92.88v-299.1h92.88zm-46.49-339.9c-29.7 0-53.79-24.6-53.79-54.3a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zm394.11 339.9h-92.68v-145.6c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7v148.1h-92.78v-299.1h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3v164.3z" /></svg>
   )
 }
+
+export const IconLocationNotFound = ({ className }: { className: string }) => {
+  return (
+    <svg className={className} height="48" viewBox="0 0 48 48" width="48" xmlns="http://www.w3.org/2000/svg"><path d="m0 0h48v48h-48z" fill="none" /><path d="m24 6c7.4 0 13 6 13 14s-8.6 16.7-13 21.2c-4.4-4.5-13-13.7-13-21.2s5.6-14 13-14m0-4c-9.9 0-17 8.1-17 18s11.5 21.3 15.6 25.4a1.9 1.9 0 0 0 2.8 0c4.1-4.1 15.6-15.3 15.6-25.4s-7.1-18-17-18z" /><path d="m24 10a9 9 0 1 0 9 9 9 9 0 0 0 -9-9zm0 4a5.7 5.7 0 0 1 1.8.3l-6.4 6.5a3.7 3.7 0 0 1 -.4-1.8 5 5 0 0 1 5-5zm0 10a5.7 5.7 0 0 1 -1.8-.3l6.4-6.5a3.7 3.7 0 0 1 .4 1.8 5 5 0 0 1 -5 5z" /></svg>
+  )
+}
