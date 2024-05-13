@@ -23,8 +23,8 @@ export default function ProfileDropdown({ avatar_url, fullName, email, avatarBgC
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <Button variant={'ghost'} size={'icon'}>
-          <Avatar className={cn('size-6', avatarBgColor)}>
+        <Button variant={'outline'} size={'icon'}>
+          <Avatar className={cn('size-5', avatarBgColor)}>
             <AvatarImage src={avatar_url} alt={`${fullName} profile image`} />
             <AvatarFallback>SC</AvatarFallback>
           </Avatar>

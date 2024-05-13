@@ -12,6 +12,7 @@ import {
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
 import { ListItem } from './list-item';
+import { Button } from '@/components/ui/button';
 
 const components: {
   title: string;
@@ -19,28 +20,28 @@ const components: {
   description: string;
   icon?: string;
 }[] = [
-  {
-    title: 'Blog Post',
-    href: '/docs/primitives/alert-dialog',
-    description:
-      'A modal dialog that interrupts the user with important content and expects a response.',
-    icon: '🚨',
-  },
-  {
-    title: '¿Que hay de nuevo?',
-    href: '/docs/primitives/hover-card',
-    description:
-      'For sighted users to preview content available behind a link.',
-    icon: '🃏',
-  },
-  {
-    title: 'Documentación',
-    href: '/docs/primitives/progress',
-    description:
-      'Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.',
-    icon: '📊',
-  },
-];
+    {
+      title: 'Blog Post',
+      href: '/docs/primitives/alert-dialog',
+      description:
+        'A modal dialog that interrupts the user with important content and expects a response.',
+      icon: '🚨',
+    },
+    {
+      title: '¿Que hay de nuevo?',
+      href: '/docs/primitives/hover-card',
+      description:
+        'For sighted users to preview content available behind a link.',
+      icon: '🃏',
+    },
+    {
+      title: 'Documentación',
+      href: '/docs/primitives/progress',
+      description:
+        'Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.',
+      icon: '📊',
+    },
+  ];
 
 const navigationItems = [
   {
@@ -92,24 +93,14 @@ const navigationItems = [
 
 export function Navigation() {
   return (
-    <NavigationMenu>
+    <NavigationMenu className='text-muted-foreground z-[3000]'>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
-            <NavigationMenuLink
-              className={`${navigationMenuTriggerStyle()} bg-accent`}
-            >
-              Empezar
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-
-        <NavigationMenuItem>
           <NavigationMenuTrigger>Caracteristicas</NavigationMenuTrigger>
-          <NavigationMenuContent>
+          <NavigationMenuContent >
             <ul className="grid gap-3 p-4 md:w-[400px] lg:w-auto lg:grid-cols-[.75fr_1fr]">
               {navigationItems.map((item) => (
-                <ListItem href={item.href} title={item.title} icon={item.icon}>
+                <ListItem href={item.href} key={item.title} title={item.title} icon={item.icon}>
                   {item.description}
                 </ListItem>
               ))}
@@ -121,7 +112,7 @@ export function Navigation() {
           <NavigationMenuContent>
             <ul className="grid gap-3 p-4 md:w-[400px] lg:w-auto lg:grid-cols-[.75fr_1fr]">
               {components.map((item) => (
-                <ListItem href={item.href} title={item.title} icon={item.icon}>
+                <ListItem href={item.href} key={item.title} title={item.title} icon={item.icon}>
                   {item.description}
                 </ListItem>
               ))}

@@ -15,7 +15,7 @@ export const ListItem = React.forwardRef<
   return (
     <li
       className={cn(
-        'flex items-center gap-1 rounded-md px-4 transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
+        'flex items-center text-sm gap-1 rounded-md px-4 transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
         props.width ?? 'w-[300px]',
       )}
     >
