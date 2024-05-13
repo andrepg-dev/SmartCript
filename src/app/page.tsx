@@ -9,8 +9,7 @@ export default function HomePage() {
 
   return (
     <main>
-
-      <div className="absolute inset-0 w-full h-full -z-10 animate-fade ">
+      <div className="absolute inset-0 min-w-screen pointer-events-none min-h-screen w-full h-full -z-10 animate-fade ">
         <img src="/background.svg" className="insert-0 w-full h-full absolute top-24 opacity-20 dark:opacity-15" />
       </div>
 
