@@ -1,3 +1,5 @@
+<!-- Eleva tus notas con SmartCript -->
+
 # TODO
 
 - [x] Tomar la transcripción de vídeos de Youtube
@@ -5,8 +7,12 @@
 - [x] Extraer el texto de archivos .PDFs
 - [x] Extraer texto de .DOCX
 - [x] Extraer texto de .TXT
+
+<!-- 
+  TOOD: En un futuro
 - [ ] Extraer texto de vídeos .MP4
 - [ ] Extraer texto de audios .MP3
+ -->
 
 # Backend
 
@@ -25,8 +31,9 @@
 # Mails
 
 - [x] API para enviar mails
-- [ ] Usuarios que se suscriban a la página para recibir mails (almacenar en base de datos)
+- [x] Usuarios que se suscriban a la página para recibir mails (almacenar en base de datos)
 - [ ] Enviar mails con mailgun
+- [ ] Personalizar una plantilla para los mails
 
 # Diseño
 
@@ -39,6 +46,10 @@
 
 - [x] Usar stripe para pagos
 - [x] Poner tarjeta de crédito para pagos
+
+# Login
+
+- [ ] Usar NextAuth para registrar a los usuarios
 
 # Tests
 
