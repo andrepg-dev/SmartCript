@@ -4,6 +4,7 @@ import { GeistSans } from 'geist/font/sans';
 
 import HeaderNavigation from '@/components/project/navigation/header';
 import type { Metadata } from 'next';
+import NextAuthProvider from '@/components/project/account/next-auth/session-provider';
 
 import './globals.css';
 
@@ -20,16 +21,17 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`${GeistSans.className}`}>
-        <TooltipProvider>
-          <ThemeProvider
-            attribute="class"
-            enableSystem
-
-          >
-            <HeaderNavigation />
-            {children}
-          </ThemeProvider>
-        </TooltipProvider>
+        <NextAuthProvider>
+          <TooltipProvider>
+            <ThemeProvider
+              attribute="class"
+              enableSystem
+            >
+              <HeaderNavigation />
+              {children}
+            </ThemeProvider>
+          </TooltipProvider>
+        </NextAuthProvider>
       </body>
     </html>
   );
