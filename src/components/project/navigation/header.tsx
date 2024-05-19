@@ -1,15 +1,14 @@
-import { Navigation } from "@/components/project/navigation/navigation";
 import ProfileDropdown from "@/components/project/navigation/profile-dropdown";
 import { ThemeButton } from "@/components/theme/theme-button";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 
-export default function HeaderNavigation() {
+export default function HeaderNavigation({ children }: { children: React.ReactNode }) {
   return (
-    <header className="py-3 px-8 flex justify-between items-center border-b backdrop-blur-xl">
+    <header className="relative z-[3000] py-3 px-8 flex justify-between items-center border-b backdrop-blur-xl ">
       <div className="flex items-center gap-8">
         <Link href={'/'} className="text-lg font-bold">SmartCript</Link>
-        <Navigation />
+        {children}
       </div>
 
       <div className="flex items-center gap-3">
@@ -24,7 +23,7 @@ export default function HeaderNavigation() {
 
         <ProfileDropdown
           avatar_url="/avatars/20.png"
-          avatarBgColor="bg-purple"
+          avatarBgColor="bg-blue-500"
           fullName="Andre Sebastian Ponce Garcia"
           email="andreponce417@gmail.com" />
       </div>

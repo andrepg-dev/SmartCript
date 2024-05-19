@@ -96,8 +96,8 @@ export function Navigation() {
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger>Caracteristicas</NavigationMenuTrigger>
-          <NavigationMenuContent >
-            <ul className="grid gap-3 p-4 md:w-[400px] lg:w-auto lg:grid-cols-[.75fr_1fr]">
+          <NavigationMenuContent>
+            <ul className="grid gap-3 p-4 md:w-[400px] lg:w-auto lg:grid-cols-[.75fr_1fr] z-[3000]">
               {navigationItems.map((item) => (
                 <ListItem href={item.href} key={item.title} title={item.title} icon={item.icon}>
                   {item.description}

@@ -4,7 +4,7 @@ import { IconLocationNotFound } from "../icons/icons";
 
 export default function NotFoundPage() {
   return (
-    <main className="flex flex-col gap-2 items-center justify-center h-[80vh]">
+    <main className="flex flex-col gap-2 items-center justify-center h-screen">
 
       <IconLocationNotFound className="w-24 h-24 fill-primary" />
 
