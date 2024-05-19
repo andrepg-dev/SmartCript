@@ -7,7 +7,7 @@ export function EmailValidation(email: string): boolean {
 }
 
 export function PasswordValidation(password: string): boolean {
-  if (password.length < 8 || password.length > 255) return false
+  if (password.length < 8) return false
   return true
 }
 
@@ -26,4 +26,23 @@ export function validations(email: string, password: string) {
   if (password.includes(email)) return [{ error: 'Password cannot contain email' }, { status: 400 }];
 
   return [null, { status: 200 }];
+}
+
+export function validationsForm(email: string, password: string): string | null {
+  // Validations
+  if (!email || !password || email === '' || password === '') return 'Email and password are required'
+
+  // Email validation
+  const regex = EmailValidation(email);
+  if (!regex) return 'Invalid email'
+
+  // Password validation
+  const pass = PasswordValidation(password);
+  if (!pass) return 'Password length invalid'
+
+  if (password.length > 255) return 'Password length exceded'
+
+  if (password.includes(email)) return 'Password cannot contain email'
+
+  return null;
 }
