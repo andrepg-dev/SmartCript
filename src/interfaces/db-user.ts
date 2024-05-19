@@ -13,5 +13,5 @@ export interface DBUser {
   password: string;
   created_at?: string;
   payment_date: string | null;
-  suscriptionId: UserSuscription;
+  suscriptionId?: UserSuscription;
 }
