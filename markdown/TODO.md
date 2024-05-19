@@ -3,10 +3,10 @@
 # TODO
 
 - [x] Tomar la transcripción de vídeos de Youtube
-- [x] Validar que los archivos que se suben al input sean los correctos
 - [x] Extraer el texto de archivos .PDFs
 - [x] Extraer texto de .DOCX
 - [x] Extraer texto de .TXT
+- [x] Validar que los archivos que se suben al input sean los correctos
 
 <!-- 
   TOOD: En un futuro
@@ -25,7 +25,7 @@
 2. Usuarios con su respectiva información ✅
 3. Historial de documentos transcritos ✅
 4. guardar el tipo de documento transcripto (pdf, docx, txt, youtube, mp4, mp3) y el texto transcripto ✅
-5. Historial de compras ✖️
+5. Historial de compras ✅
 6. Suscripciones con: fecha de expiración, producto comprado, precio, usuario ✅
 
 # Mails
@@ -49,7 +49,7 @@
 
 # Login
 
-- [ ] Usar NextAuth para registrar a los usuarios
+- [x] Usar NextAuth para registrar a los usuarios
 
 # Tests
 

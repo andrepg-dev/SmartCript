@@ -12,6 +12,7 @@ Plan Básico:
 id: 2
 15 documentos transcritos al mes
 15 Vídeos de YouTube transcritos al mes con sus respectivas transcripciones
+1 usuario
 Historial de transcripciones
 Precio: 5 USD
 
