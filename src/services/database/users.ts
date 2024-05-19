@@ -19,13 +19,13 @@ export class DBUsers {
   }
 
   public async getUsers(): Promise<IDBusers[]> {
-    const { rows } = await this.makeQuery('SELECT users.id as user_id, fullname, email, avatar, avatar_color, password, created_at, suscription_name, payment_date, amount FROM users INNER JOIN suscriptions ON users.suscription_id = suscriptions.id;') as { rows: IDBusers[] };
+    const { rows } = await this.makeQuery('SELECT users.id as user_id, fullname, email, avatar, avatar_color, password, created_at, suscription_name, payment_date, suscriptions.id as suscription_id, amount FROM users INNER JOIN suscriptions ON users.suscription_id = suscriptions.id;') as { rows: IDBusers[] };
     return rows;
   }
 
-  public async getUserById(id: number) {
-    const { rows } = await this.makeQuery('SELECT * FROM users WHERE id = $1', [id])
-    return rows;
+  public async getUserById(id: string) {
+    const { rows } = await this.makeQuery('SELECT users.id as user_id, fullname, email, avatar, avatar_color, password, created_at, suscription_name, payment_date, suscriptions.id as suscription_id, amount FROM users INNER JOIN suscriptions ON users.suscription_id = suscriptions.id WHERE users.id = $1', [id])
+    return rows[0];
   }
 
   /*
@@ -39,20 +39,56 @@ export class DBUsers {
     created_at date DEFAULT CURRENT_DATE
   */
 
-  public async createUser({ id, fullName, email, password, suscriptionId, avatar, avatarColor, payment_date }: DBUser): Promise<IDBusers[]> {
+  public async createUser({ id, fullName, email, password, suscriptionId = 1, avatar, avatarColor, payment_date = null }: DBUser): Promise<IDBusers[]> {
     return new Promise(async (resolve, reject) => {
       try {
         // Hash the password
         const hashed_password = await HashPassword(password);
 
         // Insert data into the database with the hashed password
-        const { rows } =
-          await this.makeQuery('INSERT INTO users (id, fullname, email, password, suscription_id, avatar, avatar_color, payment_date) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)',
-            [id, fullName, email, hashed_password, suscriptionId, avatar, avatarColor, payment_date]);
-        resolve(rows);
+        await this.makeQuery('INSERT INTO users (id, fullname, email, password, suscription_id, avatar, avatar_color, payment_date) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)',
+          [id, fullName, email, hashed_password, suscriptionId, avatar, avatarColor, payment_date]);
+
+        // Select the user from the database
+        const user = await this.getUserById(id);
+        resolve(user);
       } catch (error) {
         reject(error)
       }
     })
   }
 }
+
+
+// REGISTER:
+// {
+//   "user_id": "22c509cd-6994-40f9-b2a2-18672c906ebb",
+//   "fullname": "Andre Ponce",
+//   "email": "nuevo@gmail.com",
+//   "avatar": "/avatars/1.png",
+//   "avatar_color": "bg-blue-500",
+//   "password": "$2b$10$vHz4Ycweud7bsxlq.celY.pNOutOi9Emm4AGoS9KqvS.X6goi8n9S",
+//   "created_at": "2024-05-17T06:00:00.000Z",
+//   "suscription_name": "FREE",
+//   "payment_date": null,
+//   "suscription_id": 1,
+//   "amount": 0,
+//   "exp": 1718598366,
+//   "iat": 1716006366
+// }
+
+
+// LOG IN:
+// {
+//   "id": "22c509cd-6994-40f9-b2a2-18672c906ebb",
+//   "fullname": "Andre Ponce",
+//   "email": "nuevo@gmail.com",
+//   "avatar": "/avatars/1.png",
+//   "avatar_color": "bg-blue-500",
+//   "password": "$2b$10$vHz4Ycweud7bsxlq.celY.pNOutOi9Emm4AGoS9KqvS.X6goi8n9S",
+//   "suscription_id": 1,
+//   "payment_date": null,
+//   "created_at": "2024-05-17T06:00:00.000Z",
+//   "exp": 1718598384,
+//   "iat": 1716006384
+// }
