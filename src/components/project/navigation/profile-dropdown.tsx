@@ -1,5 +1,5 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,7 +9,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
-import { HomeIcon, LayoutDashboard, LogOut, Settings } from 'lucide-react';
+import { HomeIcon, LayoutDashboard, LogOut, SettingsIcon } from 'lucide-react';
+import Link from "next/link";
 
 interface ProfileDropdownProps {
   avatar_url: string;
@@ -22,34 +23,42 @@ export default function ProfileDropdown({ avatar_url, fullName, email, avatarBgC
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <Button variant={'outline'} size={'icon'}>
+        <div className={buttonVariants({ size: 'icon', variant: 'outline' })}>
           <Avatar className={cn('size-5', avatarBgColor)}>
             <AvatarImage src={avatar_url} alt={`${fullName} profile image`} />
             <AvatarFallback>SC</AvatarFallback>
           </Avatar>
-        </Button>
+        </div>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent className="w-[218px]">
         <DropdownMenuLabel className="flex flex-col">
           <span>{fullName}</span>
           <span className="text-xs text-muted-foreground font-normal">{email}</span>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <HomeIcon size={16} className="mr-2" />
-          Home
+          <Link href="/" className="flex items-center w-full px-2 py-1.5">
+            <HomeIcon size={16} className="mr-2" />
+            Inicio
+          </Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <LayoutDashboard size={16} className="mr-2" />
-          Dashboard
+          <Link href="/dashboard" className="flex items-center w-full px-2 py-1.5">
+            <LayoutDashboard size={16} className="mr-2" />
+            Panel de control
+          </Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Settings size={16} className="mr-2" />
-          Settings
+          <Link href="/settings" className="flex items-center w-full px-2 py-1.5">
+            <SettingsIcon size={16} className="mr-2" />
+            Configuracion
+          </Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <LogOut size={16} className="mr-2" />
-          Log out
+          <Link href="/logout" className="flex items-center w-full px-2 py-1.5">
+            <LogOut size={16} className="mr-2" />
+            Cerrar sesión
+          </Link>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
