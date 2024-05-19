@@ -76,9 +76,9 @@ const config = {
           '0%': { top: '0', left: '0' },
           '100%': { top: '-20rem', left: '-15rem' },
         },
-        'fade':{
+        'fade': {
           '0%': { opacity: '0' },
-          '100%': { opacity: '1'}
+          '100%': { opacity: '1' }
         }
       },
       animation: {
