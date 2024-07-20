@@ -1,7 +1,8 @@
+import { extractValueOfCookieSerialized } from '@/utils/extractValueOfCookieSerialized';
 import { serialize } from 'cookie';
 import { verify } from 'jsonwebtoken';
 import { cookies as CookieServer } from "next/headers";
-import { extractValueOfCookieSerialized } from '../profile/route';
+
 
 export function POST() {
   const cookies = CookieServer().get(process.env.COOKIE_NAME as string);

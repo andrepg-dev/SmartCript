@@ -1,3 +1,4 @@
+import { extractValueOfCookieSerialized } from '@/utils/extractValueOfCookieSerialized';
 import { verify } from 'jsonwebtoken'
 import { cookies as CookieServer } from "next/headers";
 
@@ -20,6 +21,3 @@ export async function POST() {
   }
 }
 
-export function extractValueOfCookieSerialized(cookie: string): string {
-  return cookie.split(';')[0].split('=')[1];
-}
