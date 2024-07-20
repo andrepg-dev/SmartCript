@@ -79,14 +79,45 @@ const config = {
         'fade': {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' }
-        }
+        },
+        "shine-pulse": {
+          "0%": {
+            "background-position": "0% 0%",
+          },
+          "50%": {
+            "background-position": "100% 100%",
+          },
+          to: {
+            "background-position": "0% 0%",
+          },
+        },
+        "border-beam": {
+          "100%": {
+            "offset-distance": "100%",
+          },
+        },
+        meteor: {
+          "0%": { transform: "rotate(215deg) translateX(0)", opacity: "1" },
+          "70%": { opacity: "1" },
+          "100%": {
+            transform: "rotate(215deg) translateX(-500px)",
+            opacity: "0",
+          },
+        },
+        "background-position-spin": {
+          "0%": { backgroundPosition: "top center" },
+          "100%": { backgroundPosition: "bottom center" },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'text-gradient': 'text-gradient 4s linear 0s infinite normal forwards running ',
         'login-background': 'login-background 20s linear alternate infinite',
-        'fade': 'fade 2.5s ease-in-out'
+        'fade': 'fade 2.5s ease-in-out',
+        "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
+        "meteor": "meteor 5s linear infinite",
+        backgroundPositionSpin: "background-position-spin 3000ms infinite alternate"
       },
       fontFamily: {
         sans: ['var(--font-geist-sans)'],
