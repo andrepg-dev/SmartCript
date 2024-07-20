@@ -6,6 +6,9 @@ import NextAuthProvider from '@/components/project/account/next-auth/session-pro
 import type { Metadata } from 'next';
 
 import './globals.css';
+import ReduxProvider from '@/components/redux/redux-provider';
+
+import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
   title: 'SmartCript - Home',
@@ -20,16 +23,19 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`${GeistSans.className}`}>
-          <NextAuthProvider>
-            <TooltipProvider>
-              <ThemeProvider
-                attribute="class"
-                enableSystem
-              >
+        <NextAuthProvider>
+          <TooltipProvider>
+            <ThemeProvider
+              attribute="class"
+              enableSystem
+            > 
+              <Toaster />
+              <ReduxProvider>
                 {children}
-              </ThemeProvider>
-            </TooltipProvider>
-          </NextAuthProvider>
+              </ReduxProvider>
+            </ThemeProvider>
+          </TooltipProvider>
+        </NextAuthProvider>
       </body>
     </html>
   );
