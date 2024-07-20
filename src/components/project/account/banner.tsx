@@ -8,7 +8,7 @@ export default function AccountsBanner({ className }: { className?: string }) {
   return (
     <div className={cn(className, 'hidden bg-muted dark:bg-muted/50 lg:flex flex-col p-12 text-balance relative h-full min-h-screen')}>
 
-      <div className="w-full h-full absolute inset-0 -z-10 opacity-20 overflow-hidden">
+      <div className="w-full h-full absolute inset-0 opacity-50 overflow-hidden">
         <img
           src="/login.svg"
           alt="Smartcript"
