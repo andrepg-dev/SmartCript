@@ -1,3 +1,4 @@
+import GradualSpacing from "@/components/magicui/gradual-spacing";
 import GradientText from "@/components/project/text/gradient";
 import { AnimateText } from "@/components/text/animation";
 import { Button } from "@/components/ui/button";
@@ -10,7 +11,7 @@ export default function HomePage() {
         <img src="/background.svg" className="insert-0 w-full h-full absolute top-24 opacity-20 dark:opacity-15 pointer-events-none select-none" />
       </div>
       <div className="mt-32 text-center flex flex-col">
-        <AnimateText text="Resume, transcribe, estudia y ahorra con SmartCript" />
+        <AnimateText text="Resume, transcribe, estudia y ahorra con SmartCript" className="mb-6" />
 
         <h1 className="mb-3 text-3xl font-bold leading-tight tracking-tighter md:text-5xl lg:leading-[1.1]">
           Mejora tu rendimiento academico
