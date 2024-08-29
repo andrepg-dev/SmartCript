@@ -2,7 +2,7 @@ import { extractValueOfCookieSerialized } from '@/utils/extractValueOfCookieSeri
 import { verify } from 'jsonwebtoken'
 import { cookies as CookieServer } from "next/headers";
 
-export async function POST() {
+export async function GET() {
   // Verificar si el usuario está autenticado, y extraer los datos con JSON Web Token
   const cookies = CookieServer().get(process.env.COOKIE_NAME as string);
 
