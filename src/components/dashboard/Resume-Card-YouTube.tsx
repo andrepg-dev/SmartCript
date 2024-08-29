@@ -62,8 +62,6 @@ export default function ResumeYouTubeCard({ Icon, title, description }: ResumeCa
       });
     }
 
-
-
     const isValid = (url: string) => {
       const isYoutube = getVideoId(url).service === 'youtube' && getVideoId(url).id ? true : false
       return isYoutube

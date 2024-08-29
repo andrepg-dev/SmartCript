@@ -1,7 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { openYtDialogSlice } from '../slice/open-yt-dialog';
 import { extractedTextSlice } from '../slice/stracted-text';
 import { YTextractedTextSlice } from '../slice/YT-stracted-text';
-import { openYtDialogSlice } from '../slice/open-yt-dialog';
+import { userSlice } from '../slice/user-data';
 
 export const store = configureStore({
   reducer: {
@@ -10,7 +11,10 @@ export const store = configureStore({
     YTextractedText: YTextractedTextSlice.reducer,
 
     // Dialogs
-    openYtDialog: openYtDialogSlice.reducer
+    openYtDialog: openYtDialogSlice.reducer,
+
+    // User data R -> Redux
+    RuserInfo: userSlice.reducer
   },
 });
 

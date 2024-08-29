@@ -5,13 +5,17 @@ export enum UserSuscription {
 }
 
 export interface DBUser {
-  id: string;
-  fullName: string;
+  user_id: string;
+  fullname: string;
   email: string;
   avatar: string;
-  avatarColor?: string;
+  avatar_color?: string;
   password: string;
   created_at?: string;
   payment_date: string | null;
   suscriptionId?: UserSuscription;
+  suscription_name: string;
+  amount: number;
+  exp: number;
+  iat: number;
 }
