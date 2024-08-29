@@ -2,7 +2,6 @@
 
 import ShineBorder from "@/components/magicui/shine-border";
 import ProfileDropdown from "@/components/project/navigation/profile-dropdown";
-import { AnimateText } from "@/components/text/animation";
 import { ThemeButton } from "@/components/theme/theme-button";
 import { Button } from "@/components/ui/button";
 import { useAppSelector } from "@/hooks/redux";
@@ -70,7 +69,7 @@ export default function YoutubePage() {
 
       <div className="p-4 flex flex-col gap-1 cursor-pointer">
         {transcription.map((val: Transcription) => (
-          <p className="group">
+          <p className="group" key={val.duration}>
             <span className="text-blue-700 dark:text-blue-500 group-hover:underline">{val.offset} - {val.duration}</span> - {val.text}
           </p>))
         }
