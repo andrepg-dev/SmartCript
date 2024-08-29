@@ -1,22 +1,21 @@
 'use client'
 
-import { useEffect, useState } from "react"
 
 import ProfileDropdown from "@/components/project/navigation/profile-dropdown"
 import { ThemeButton } from "@/components/theme/theme-button"
 import { FileArchive, FileText, Youtube } from "lucide-react"
 
-
 import DashboardBanner from "@/components/dashboard/Dashboard-Banner"
+import LoadingResume from "@/components/dashboard/loading-resume"
 import ResumeCardFile from "@/components/dashboard/Resume-Card-File"
 import ResumeCard from "@/components/dashboard/Resume-Card-YouTube"
 import StatisticsCard from "@/components/dashboard/Statistics-Card"
 import Title from "@/components/dashboard/Title"
 import { TooltipElement } from "@/components/shadcn/tooltip"
-import LoadingResume from "@/components/dashboard/loading-resume"
+import useUser from "@/hooks/user"
 
 export default function Dashboard() {
-  const [user, setUser] = useState<any>();
+  const { user } = useUser()
 
   const accept = {
     pdf: { 'application/pdf': ['.pdf'] },
@@ -26,29 +25,22 @@ export default function Dashboard() {
     txt: { 'text/plain': ['.txt'] }
   }
 
-  useEffect(() => {
-    (async () => {
-      const userProfile = await fetch('/api/auth/profile', { method: 'POST' })
-      const data = await userProfile.json();
-      setUser(data)
-    })()
-  }, [])
 
   return (
     <div className="pb-8 bg-[#FAFAFA] dark:bg-background relative">
-      
+
       <LoadingResume />
 
       <header className="border-b flex justify-between px-6 bg-white dark:bg-[#0a0a0a] ">
         <span className="w-full flex items-center py-4">Panel de control</span>
         <div className="flex gap-2 items-center">
           <ThemeButton />
-          {user && (
+          {user.user && user && (
             <ProfileDropdown
-              avatarBgColor={user.avatar_color}
-              avatar_url={user.avatar}
-              fullName={user.fullname}
-              email={user.email}
+              avatarBgColor={user.user.avatar_color || 'bg-primary'}
+              avatar_url={user.user.avatar}
+              fullName={user.user.fullname}
+              email={user.user.email}
             />
           )}
         </div>
@@ -110,7 +102,7 @@ en este campo."
           <StatisticsCard Icon={FileArchive} value={1328} description="Total de Archivos Word resumidos" />
           <StatisticsCard Icon={FileText} value={584} description="Total Archivos de Texto resumidos" />
 
-          {user && <DashboardBanner userName={user.fullname} />}
+          {user && <DashboardBanner userName={user.user?.fullname || ''} />}
         </div>
       </div>
     </div>
