@@ -37,7 +37,7 @@ export default function Aside() {
           <div className="text-zinc-900 dark:text-muted-foreground mt-1">
             <span className="text-xs text px-3">Resume/Transcribe</span>
 
-            <div className="mt-2 flex flex-col gap-1">
+            <div className="mt-2 flex flex-col">
               <Link href="/dashboard/youtube">
                 <AsideItem Icon={Youtube} title="Video de YouTube" active={isActive('/dashboard/youtube')} />
               </Link>
