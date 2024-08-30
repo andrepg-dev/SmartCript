@@ -35,14 +35,13 @@ export default function Dashboard() {
         <span className="w-full flex items-center py-4">Panel de control</span>
         <div className="flex gap-2 items-center">
           <ThemeButton />
-          {user.user && user && (
-            <ProfileDropdown
-              avatarBgColor={user.user.avatar_color || 'bg-primary'}
-              avatar_url={user.user.avatar}
-              fullName={user.user.fullname}
-              email={user.user.email}
-            />
-          )}
+          <ProfileDropdown
+            avatarBgColor={user.user && user.user.avatar_color || 'bg-primary'}
+            avatar_url={user.user && user.user.avatar}
+            fullName={user.user && user.user.fullname}
+            email={user.user && user.user.email}
+          />
+
         </div>
       </header>
 

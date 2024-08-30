@@ -13,19 +13,19 @@ import { HomeIcon, LayoutDashboard, LogOut, SettingsIcon } from 'lucide-react';
 import Link from "next/link";
 
 interface ProfileDropdownProps {
-  avatar_url: string;
-  avatarBgColor: string;
-  fullName: string;
-  email: string;
+  avatar_url: string | null;
+  avatarBgColor: string | null;
+  fullName: string | null;
+  email: string | null;
 }
 
-export default function ProfileDropdown({ avatar_url, fullName, email, avatarBgColor }: ProfileDropdownProps) {
+export default function ProfileDropdown({ fullName, email, avatarBgColor, avatar_url }: ProfileDropdownProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
         <div className={buttonVariants({ size: 'icon', variant: 'outline' })}>
           <Avatar className={cn('size-5', avatarBgColor)}>
-            <AvatarImage src={avatar_url} alt={`${fullName} profile image`} />
+            <AvatarImage src={avatar_url || ""} alt={`${fullName} profile image`} />
             <AvatarFallback>SC</AvatarFallback>
           </Avatar>
         </div>

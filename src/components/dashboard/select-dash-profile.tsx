@@ -19,7 +19,7 @@ export default function SelectProfile() {
       <SelectTrigger className="w-full border-transparent hover:ring-1 ring-primary/40">
         <div className="flex overflow-hidden pointer-events-none select-none">
           <div className="aspect-square size-5 rounded bg-gradient-to-br from-red-500  to-blue-600 mr-2 text-white font-medium text-background text-center items-center flex justify-center">S</div>
-          <span className={cn('font-medium w-full overflow-hidden text-ellipsis', !user && 'flex  gap-2')}>SmartCript de {user.user?.fullname ? user.user?.fullname : (<Skeleton className="w-[100px] h-[20px]"></Skeleton>)}</span>
+          <span className={cn('font-medium w-full overflow-hidden text-ellipsis flex gap-2')}>SmartCript de {user.user?.fullname ? user.user?.fullname : (<Skeleton className="w-[100px] h-[20px]"></Skeleton>)}</span>
         </div>
       </SelectTrigger>
       <SelectContent className="w-[318px] py-2 flex flex-col text-sm bg-white dark:bg-[#0a0a0a]">
