@@ -8,6 +8,9 @@ export const authOptions: AuthOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string
     })
   ],
-  secret: process.env.JWT_SECRET
+  secret: process.env.JWT_SECRET,
+  jwt: {
+    maxAge: 60 * 60 * 24 * 30 // 30 days
+  }
 }
 
