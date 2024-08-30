@@ -3,8 +3,9 @@ import { DBUsers } from "@/services/database/users";
 import { validations } from "@/services/database/validation";
 
 // Cookies with JSON Web Tokens
-import jwt from 'jsonwebtoken';
+import { DBUserCreate } from "@/interfaces/db-user";
 import { serialize } from 'cookie';
+import jwt from 'jsonwebtoken';
 import { cookies } from 'next/headers';
 
 export async function POST(req: Request) {
@@ -37,15 +38,17 @@ export async function POST(req: Request) {
     return Response.json({ error: 'Email already exists' }, { status: 404 });
   }
 
-  const userToCreate = {
-    id: await gen_random_uuid(),
-    fullName,
+  const userToCreate: DBUserCreate = {
+    user_id: await gen_random_uuid(),
+    fullname: fullName,
     email: comprimed_values.email,
     password: comprimed_values.password,
     avatar,
-    avatarColor,
+    avatar_color: avatarColor,
     payment_date: null,
     suscriptionId: 1,
+    suscription_name: 'FREE',
+    amount: 0
   }
 
   const user = await db.createUser(userToCreate);
@@ -69,23 +72,3 @@ export async function POST(req: Request) {
 
   return Response.json(null, { status: 200 })
 }
-/*
-{
-    "user": [
-        {
-            "user_id": "886c8fe7-654c-407c-9d07-f9b78c34f833",
-            "fullname": "asd asdasd",
-            "email": "asjdhajsdq@gmail.com",
-            "avatar": "https://www.gravatar.com/avatar/",
-            "avatar_color": "bg-blue-500",
-            "password": "$2b$10$LgR8/Kz9yxzJVAFYZDM8fuGuL4h1XT6YZk41PErONMRs2RXFrCPSy",
-            "created_at": "2024-05-15T06:00:00.000Z",
-            "suscription_name": "FREE",
-            "payment_date": null,
-            "amount": 0
-        }
-    ],
-    "exp": 1718428598,
-    "iat": 1715836598
-}
- */

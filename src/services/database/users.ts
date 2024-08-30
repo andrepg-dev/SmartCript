@@ -1,4 +1,4 @@
-import { DBUser } from "@/interfaces/db-user";
+import { DBUser, DBUserCreate } from "@/interfaces/db-user";
 import { DBUser as IDBusers } from '@/interfaces/db-user'
 import { HashPassword } from "@/utils/bcrypt_password";
 import { connection } from "@/utils/database";
@@ -39,7 +39,7 @@ export class DBUsers {
     created_at date DEFAULT CURRENT_DATE
   */
 
-  public async createUser({ id, fullName, email, password, suscriptionId = 1, avatar, avatarColor, payment_date = null }: DBUser): Promise<IDBusers[]> {
+  public async createUser({ user_id, fullname, email, password, suscriptionId = 1, avatar, avatar_color, payment_date = null }: DBUserCreate): Promise<DBUserCreate[]> {
     return new Promise(async (resolve, reject) => {
       try {
         // Hash the password
@@ -47,10 +47,10 @@ export class DBUsers {
 
         // Insert data into the database with the hashed password
         await this.makeQuery('INSERT INTO users (id, fullname, email, password, suscription_id, avatar, avatar_color, payment_date) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)',
-          [id, fullName, email, hashed_password, suscriptionId, avatar, avatarColor, payment_date]);
+          [user_id, fullname, email, hashed_password, suscriptionId, avatar, avatar_color, payment_date]);
 
         // Select the user from the database
-        const user = await this.getUserById(id);
+        const user = await this.getUserById(user_id);
         resolve(user);
       } catch (error) {
         reject(error)

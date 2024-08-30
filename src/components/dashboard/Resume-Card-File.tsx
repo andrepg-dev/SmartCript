@@ -46,6 +46,7 @@ export default function ResumeCardFile({ accept, title, description, type }: Res
         file && 'border-foreground/70 dark:bg-purple/5 bg-purple/25'
       )}
     >
+
       <header className="flex items-center gap-2">
         <div className="rounded-full p-[5px] bg-muted/30 size-9 flex items-center justify-center">
           <FileText className="size-9" strokeWidth={1} />

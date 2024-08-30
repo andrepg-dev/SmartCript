@@ -1,11 +1,10 @@
 import { DBUser } from "@/interfaces/db-user";
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 // Thunk para obtener el usuario de la API
 export const fetchUser = createAsyncThunk('user/fetchUser', async () => {
   const response = await fetch('/api/auth/profile');
   const data = await response.json() as DBUser;
-  console.log('User data:', data);
 
   return data;
 });
@@ -20,7 +19,7 @@ export const userSlice = createSlice({
   reducers: {
     clearUser: (state) => {
       state.user = null;
-    }
+    },
   },
   extraReducers: (builder) => {
     builder

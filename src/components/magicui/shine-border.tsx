@@ -29,7 +29,7 @@ export default function ShineBorder({
   color = "#fff",
   className,
   children,
-  
+
 }: ShineBorderProps) {
   return (
     <div

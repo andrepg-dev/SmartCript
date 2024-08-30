@@ -44,6 +44,29 @@ export default function ResumeYouTubeCard({ Icon, title, description }: ResumeCa
     setIsValid(isValid(ytUrl))
   }, [ytUrl])
 
+  useEffect(() => {
+    const handlePaste = async () => {
+      try {
+        await navigator.clipboard.readText().then(async (text) => {
+          if (isUrlValid(text)) {
+            setYtUrl(text)
+            await handleClick({ url: text })
+          }
+        })
+      } catch (error) {
+        console.error('Failed to read clipboard contents')
+      }
+    }
+
+    handlePaste()
+  }, [])
+
+
+  function isUrlValid(url: string): Boolean {
+    const isYoutube = getVideoId(url).service === 'youtube' && getVideoId(url).id ? true : false
+    return isYoutube
+  }
+
   const handleClick = async ({ url }: { url: string }) => {
 
     if (lastProcessedUrl === url && data.error) {
@@ -62,12 +85,7 @@ export default function ResumeYouTubeCard({ Icon, title, description }: ResumeCa
       });
     }
 
-    const isValid = (url: string) => {
-      const isYoutube = getVideoId(url).service === 'youtube' && getVideoId(url).id ? true : false
-      return isYoutube
-    }
-
-    if (!isValid(url)) {
+    if (!isUrlValid(url)) {
       toast({
         variant: 'default',
         title: 'URL inválida',

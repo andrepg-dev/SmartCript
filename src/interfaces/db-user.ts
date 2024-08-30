@@ -19,3 +19,6 @@ export interface DBUser {
   exp: number;
   iat: number;
 }
+
+// Omit exp and iat from the user object
+export interface DBUserCreate extends Omit<DBUser, 'exp' | 'iat' | 'created_at'> { }  

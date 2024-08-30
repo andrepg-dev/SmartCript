@@ -80,3 +80,16 @@ button {
     background-position: 200% center;
   }
 }
+
+
+.aside-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.aside-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-border
+}
+
+.aside-scrollbar::-webkit-scrollbar-track {
+  background-color: var(--background);
+}

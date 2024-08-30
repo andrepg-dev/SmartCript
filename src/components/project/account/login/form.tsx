@@ -13,6 +13,8 @@ import { validationsForm } from "@/services/database/validation"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 import PasswordInput from "../password-input"
+import { useAppDispatch } from "@/hooks/redux"
+import { fetchUser } from "@/components/redux/slice/user-data"
 
 export default function LoginForm() {
   const [email, setEmail] = useState("")
@@ -20,6 +22,7 @@ export default function LoginForm() {
   const router = useRouter();
   const [saved, setSaved] = useState({ email: '', password: '' });
   const [loading, setLoading] = useState(false);
+  const dispatch = useAppDispatch()
 
   const [error, setError] = useState<FormError>({
     emailAndPasswordRequired: false,
@@ -68,12 +71,11 @@ export default function LoginForm() {
 
     setLoading(false)
 
+    // Si la respuesta es correcta redirigir al dashboard
     if (response.ok) {
-      const data = await response.json()
-      console.log(data)
-
-      // Redirect to dashboard
-      router.push('/dashboard');
+      // Obtener el usuario
+      dispatch(fetchUser())
+      router.push('/dashboard')
     } else {
       const data = await response.json()
 

@@ -11,12 +11,12 @@ export default function LoginPage() {
   const router = useRouter()
 
   useEffect(() => {
-    if (user) {
+    if (user.user?.email) {
       router.push('/dashboard')
     }
   }, [user, router])
 
-  return !user ? (
+  return !user.user?.email ? (
     <div className="flex items-center justify-center py-12">
       <div className="mx-auto grid w-[350px] gap-6">
         <div className="grid gap-2 text-center">

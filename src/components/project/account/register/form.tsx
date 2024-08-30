@@ -12,11 +12,15 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import PasswordInput from "../password-input";
 import Link from "next/link";
+import { useAppDispatch } from "@/hooks/redux";
+import { fetchUser } from "@/components/redux/slice/user-data";
 
 export default function RegisterForm() {
   const router = useRouter()
 
   const [loading, setLoading] = useState(false)
+
+  const dispatch = useAppDispatch()
 
   const [user, setUser] = useState({
     firstName: "",
@@ -60,8 +64,6 @@ export default function RegisterForm() {
       }))
     }
 
-    console.log({ user, password });
-
     const userToCreate = {
       fullName: `${user.firstName} ${user.lastName}`,
       email: user.email,
@@ -80,9 +82,12 @@ export default function RegisterForm() {
 
     setLoading(false);
 
+    // User created successfully ✅
     if (response.ok) {
+      dispatch(fetchUser());
       // Redirect to dashboard
       router.push('/dashboard');
+
     } else {
       const data = await response.json()
 

@@ -11,6 +11,7 @@ import {
 import RegisterFormValue from "@/components/project/account/register/form"
 
 export default function RegisterForm() {
+
   return (
     <Card className="mx-auto max-w-sm border-none w-[348px] shadow-none bg-transparent">
       <CardHeader className="px-0">
