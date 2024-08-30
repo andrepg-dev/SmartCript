@@ -15,7 +15,7 @@ export interface Transcription {
   lang: Lang;
 }
 
-export enum Lang {
+enum Lang {
   Es = "es",
 }
 
