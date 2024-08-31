@@ -104,7 +104,8 @@ export default function ResumeYouTubeCard({ Icon, title, description, className 
     dispatch(openYTDialog())
     setLastProcessedUrl(url)
 
-    const res = await fetch(`/api/yt-transcript?url=${url}`, { method: 'GET' });
+    const videoId = getVideoId(url).id;
+    const res = await fetch(`/api/yt-transcript?videoId=${videoId}`);
 
     await res.json().then((data) => {
       setLoading(false)
