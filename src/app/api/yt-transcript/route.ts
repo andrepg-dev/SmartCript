@@ -23,7 +23,7 @@ export async function GET(req: Request) {
   const info = await ytdl.getBasicInfo(url_query);
 
   const { videoDetails } = info;
-  const { title, author, description, thumbnails } = videoDetails;
+  const { title, author, description, thumbnails, viewCount, likes, dislikes } = videoDetails;
 
   const urlThumbnail = [
     thumbnails[0].url,
@@ -39,7 +39,10 @@ export async function GET(req: Request) {
     title,
     author: author.name,
     thumbnails: urlThumbnail,
-    description: Cutdescription
+    description: Cutdescription,
+    viewCount,
+    likes,
+    dislikes
   }
 
   if (!res.length || res === 'Transcript is disabled on this video') {

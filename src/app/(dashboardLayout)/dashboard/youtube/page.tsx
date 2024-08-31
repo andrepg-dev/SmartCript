@@ -2,11 +2,13 @@
 
 import ShineBorder from "@/components/magicui/shine-border";
 import ProfileDropdown from "@/components/project/navigation/profile-dropdown";
+import { TooltipElement } from "@/components/shadcn/tooltip";
 import { ThemeButton } from "@/components/theme/theme-button";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { useAppSelector } from "@/hooks/redux";
 import useUser from "@/hooks/user";
-import { Captions, Sparkles, Text } from "lucide-react";
+import { Captions, Link, Sparkles, SquareArrowOutUpRight, Text, YoutubeIcon } from "lucide-react";
 
 export interface Transcription {
   text: string;
@@ -46,7 +48,7 @@ export default function YoutubePage() {
           <Button className="px-6 pl-9 rounded-none bg-primary/5 hover:bg-primary/5">
             <span className="text-sm items-center flex rounded-none gap-2 text-primary relative">
               <Captions size={16} className="fill-white dark:fill-black h-4 p-0 m-0 absolute -left-6" />
-              Transcripción
+              Timeline
             </span>
           </Button>
 
@@ -66,19 +68,41 @@ export default function YoutubePage() {
         </ShineBorder>
       </nav>
 
-      <div className="flex">
-        <div className="mx-7 my-4 sticky top-4 left-4 w-[300px]">
-          <h1 className="text-2xl font-bold w-[300px]">{videoDetails.title}</h1>
-          <img src={videoDetails.thumbnails[2]} alt={videoDetails.title} className="rounded mt-2 w-[300px]" />
-          <p className="mt-3">{videoDetails.author}</p>
+      <div className="flex flex-col px-7 py-4">
+        <h5 className="text-2xl font-bold w-[40ch]">{videoDetails.title}</h5>
+        <div className="flex gap-1 mt-1 text-purple">
+          <YoutubeIcon className="w-5" />
+          <span>{videoDetails.author}</span>
+        </div>
+      </div>
+
+      <div className="flex justify-between">
+        <div className="px-7 py-2 flex flex-col gap-4 cursor-pointer ">
+          {transcription.map((val: Transcription, index: number) => (
+            <div className="group flex gap-3 items-center" key={index}>
+              <TooltipElement text={`Ir al segundo ${Math.round(val.offset)} del video`} duration={0}>
+                <span className="bg-purple rounded p-1 text-white ring-primary !w-9 items-center flex text-center text-sm justify-center font-bold aspect-square group-hover:ring-1">{Math.round(val.offset)}s</span>
+              </TooltipElement>
+              <span className="group-hover:underline">{val.text}</span>
+              {/* <Link className="h-auto w-4"/> */}
+              <TooltipElement text={`Ir al segundo ${Math.round(val.offset)} del video`} duration={0}>
+                <SquareArrowOutUpRight className="h-auto min-w-4 w-4 opacity-0 group-hover:opacity-100 transition" />
+              </TooltipElement>
+            </div>
+          ))}
         </div>
 
-        <div className="px-7 py-2 flex flex-col gap-1 cursor-pointer ">
-          {transcription.map((val: Transcription, index: number) => (
-            <p className="group" key={index}>
-              <span className="text-blue-700 dark:text-blue-500 group-hover:underline">{val.offset} - {val.duration}</span> - {val.text}
-            </p>))
-          }
+        <div className="mx-7 w-[500px]">
+          <div className="sticky top-4 flex flex-col gap-2">
+            <div className="relative">
+              <img src={videoDetails.thumbnails[0]} alt={videoDetails.title} className="rounded mt-2 w-[300px] ring-purple absolute top-0 -z-10 left-0  blur-3xl opacity-50 dark:opacity-30" />
+              <img src={videoDetails.thumbnails[3]} alt={videoDetails.title} className="rounded mt-2 w-[350px] ring-4 ring-purple z-20" />
+            </div>
+            <span className="mt-2">{videoDetails.description}</span>
+
+            <Input placeholder="Busca palabras clave en el timeline" className="mt-2"/>
+            <Button variant={'secondary'}>Buscar</Button>
+          </div>
         </div>
       </div>
 

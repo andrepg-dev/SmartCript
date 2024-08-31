@@ -9,7 +9,7 @@ export default function AsideItem({ Icon, title, active }: { Icon: any, title: s
     )}
       title={title}
     >
-      <Icon className="size-5 mr-2" />
+      <Icon className="w-5 min-w-5 h-5 min-h-5 mr-2" />
       <span className='line-clamp-1'>{title}</span>
     </div>
   )

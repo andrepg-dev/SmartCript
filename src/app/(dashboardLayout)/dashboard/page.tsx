@@ -62,13 +62,13 @@ export default function Dashboard() {
           </TooltipElement>
         </Title>
 
+
         <section className="grid grid-cols-2 mt-8 gap-6">
           <ResumeCard
             Icon={Youtube}
             description="Resume y transcribe fácilmente tu video de YouTube: pega el enlace en el campo proporcionado y obtén un análisis completo."
             title="YouTube"
           />
-
           <ResumeCardFile
             title="Archivo PDF"
             description="Resume y extrae el texto de tu archivo PDF de manera sencilla: arrastra y suelta el archivo
@@ -83,7 +83,6 @@ en este campo."
             type="Word"
             accept={accept.word}
           />
-
           <ResumeCardFile
             title="Archivo de Texto"
             description="Resume y extrae el texto de tu archivo PDF de manera sencilla: arrastra y suelta el archivo en este campo."

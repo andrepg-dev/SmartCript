@@ -15,9 +15,10 @@ type ResumeCardProps = {
   Icon: any;
   title: string;
   description: string;
+  className?: string;
 }
 
-export default function ResumeYouTubeCard({ Icon, title, description }: ResumeCardProps) {
+export default function ResumeYouTubeCard({ Icon, title, description, className }: ResumeCardProps) {
   const [ytUrl, setYtUrl] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [isValid, setIsValid] = useState<boolean>(false);
@@ -151,7 +152,8 @@ export default function ResumeYouTubeCard({ Icon, title, description }: ResumeCa
       onSubmit={(e) => { e.preventDefault(); handleClick({ url: ytUrl }) }}
       className={cn(
         'border  rounded-md transition relative p-6 group bg-white dark:bg-[#0a0a0a]',
-        isValid ? 'border-foreground/70 dark:bg-purple/5 bg-purple/25' : 'hover:border-foreground/30'
+        isValid ? 'border-foreground/70 dark:bg-purple/5 bg-purple/25' : 'hover:border-foreground/30',
+        className
       )}
     >
       <header className="flex items-center gap-2">

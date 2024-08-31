@@ -3,18 +3,19 @@ import { Button } from "@/components/ui/button"
 import { CloudUpload, FileText } from "lucide-react"
 
 import { cn } from "@/lib/utils"
+import { ExtractText } from "@/services/transcript/files/extract_text"
 import { useState } from "react"
 import { Accept, useDropzone } from 'react-dropzone'
-import { ExtractText } from "@/services/transcript/files/extract_text"
 
 interface ResumeCardFileProps {
   title: string
   description: string
   type: 'PDF' | 'Word' | 'TXT'
   accept: Accept,
+  className?: string
 }
 
-export default function ResumeCardFile({ accept, title, description, type }: ResumeCardFileProps) {
+export default function ResumeCardFile({ accept, title, description, type, className }: ResumeCardFileProps) {
   const [file, setFile] = useState<File | null>(null)
 
   const {
@@ -29,9 +30,7 @@ export default function ResumeCardFile({ accept, title, description, type }: Res
       if (acceptedFiles.length > 0) {
         const file = acceptedFiles[0];
         setFile(file);
-
         ExtractText(file, (text) => console.log({ text }));
-
       }
     },
   });
@@ -40,13 +39,13 @@ export default function ResumeCardFile({ accept, title, description, type }: Res
     <div
       {...getRootProps({ className: 'dropzone' })}
       className={cn(
-        'border p-6 rounded-md transition duration-150 relative overflow-hidden hover:border-foreground/30 cursor-pointer bg-white dark:bg-[#0a0a0a]',
+        'border p-6 rounded-md transition duration-150 relative hover:border-foreground/30 cursor-pointer bg-white dark:bg-[#0a0a0a]',
         isDragActive && 'border-purple dark:!bg-purple/5 !bg-purple/30',
         isDragReject && 'border-red-500 dark:!bg-red-500/5 !bg-red-500/30',
-        file && 'border-foreground/70 dark:bg-purple/5 bg-purple/25'
+        file && 'border-foreground/70 dark:bg-purple/5 bg-purple/25',
+        className
       )}
     >
-
       <header className="flex items-center gap-2">
         <div className="rounded-full p-[5px] bg-muted/30 size-9 flex items-center justify-center">
           <FileText className="size-9" strokeWidth={1} />

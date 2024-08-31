@@ -57,7 +57,7 @@ export default function Aside() {
           </div>
         </div>
 
-        <div className="text-zinc-900 dark:text-muted-foreground mt-1 mb-12">
+        <div className="text-zinc-900 dark:text-muted-foreground mt-4 mb-12">
           <span className="text-xs text px-3">Historial de videos</span>
 
           <div className="mt-2">
