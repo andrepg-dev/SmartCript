@@ -3,7 +3,6 @@ import { serialize } from 'cookie';
 import { verify } from 'jsonwebtoken';
 import { cookies as CookieServer } from "next/headers";
 
-
 export function POST() {
   const cookies = CookieServer().get(process.env.COOKIE_NAME as string);
 

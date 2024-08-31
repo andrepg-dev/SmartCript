@@ -1,5 +1,4 @@
 import { TranscriptResponse, YoutubeTranscript } from 'youtube-transcript';
-import ytdl from 'ytdl-core';
 import { YoutubeTranscriptError } from '../errors/handle';
 
 export async function GET(req: Request) {
@@ -15,38 +14,11 @@ export async function GET(req: Request) {
       return YoutubeTranscriptError(err.message);
     });
 
-  // Get info of the video with ytdl
-  const info = await ytdl.getBasicInfo('https://www.youtube.com/watch?v=' + videoId);
-
-  const { videoDetails } = info;
-  const { title, author, description, thumbnails, viewCount, likes, dislikes } = videoDetails;
-
-  const urlThumbnail = [
-    thumbnails[0].url,
-    thumbnails[1].url,
-    thumbnails[2].url,
-    thumbnails[3].url
-  ];
-
-  // Cortar la descripcion a 100 caracteres
-  const Cutdescription = description && description.length > 100 && description.slice(0, 200);
-
-  const videoDetailsToReturn = {
-    title,
-    author: author.name,
-    thumbnails: urlThumbnail,
-    description: Cutdescription,
-    viewCount,
-    likes,
-    dislikes
-  }
-
   if (!res.length || res === 'Transcript is disabled on this video') {
-    return Response.json({ error: 'No transcript found for this video', videoId, videoDetails: videoDetailsToReturn }, { status: 404 })
+    return Response.json({ error: 'No transcript found for this video', videoId }, { status: 404 })
   };
 
   return Response.json({
     transcription: res,
-    videoDetails: videoDetailsToReturn
   });
 }
