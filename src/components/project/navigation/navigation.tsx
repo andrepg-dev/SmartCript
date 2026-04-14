@@ -20,72 +20,53 @@ const components: {
   icon?: string;
 }[] = [
     {
-      title: 'Blog Post',
-      href: '/docs/primitives/alert-dialog',
+      title: 'Blog',
+      href: '#',
       description:
-        'A modal dialog that interrupts the user with important content and expects a response.',
-      icon: '🚨',
+        'Lee las últimas noticias sobre IA y educación.',
+      icon: '📝',
     },
     {
       title: '¿Que hay de nuevo?',
-      href: '/docs/primitives/hover-card',
+      href: '#',
       description:
-        'For sighted users to preview content available behind a link.',
-      icon: '🃏',
+        'Descubre las últimas actualizaciones de la plataforma.',
+      icon: '✨',
     },
     {
-      title: 'Documentación',
-      href: '/docs/primitives/progress',
+      title: 'Ayuda',
+      href: '#',
       description:
-        'Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.',
-      icon: '📊',
+        '¿Tienes dudas? Consulta nuestra sección de ayuda.',
+      icon: '❓',
     },
   ];
 
 const navigationItems = [
   {
-    title: 'Resumidor de Articulos',
-    href: '/docs',
-    description: 'Resumir articulos grandes en puntos clave',
-    icon: '📄',
-  },
-  {
     title: 'Resumidor de Youtube',
-    href: '/docs/installation',
-    description: 'How to install dependencies and structure your app.',
+    href: '/dashboard',
+    description: 'Obtén transcripciones y resúmenes de videos de YouTube.',
     icon: '🎥',
   },
   {
-    title: 'Resumir vídeos MP4',
-    href: '/docs/primitives/typography',
-    description: 'Resumir vídeos largos en puntos clave',
-    icon: '📹',
-  },
-  {
-    title: 'Resumir audios MP3',
-    href: '/docs/primitives/typography',
-    description:
-      'Resumir audios largos en puntos clave y transcribirlos a texto',
-    icon: '🔊',
-  },
-  {
     title: 'Resumir PDFs',
-    href: '/docs/primitives/typography',
-    description: 'Resumir PDFs largos en puntos clave y transcribirlos a texto',
+    href: '/dashboard',
+    description: 'Extrae los puntos clave de tus documentos PDF.',
     icon: '📄',
   },
   {
     title: 'Resumir Archivos DOCX',
-    href: '/docs/primitives/typography',
+    href: '/dashboard',
     description:
-      'Resumir archivos DOCX largos en puntos clave y transcribirlos a texto',
+      'Analiza y resume tus documentos Word rápidamente.',
     icon: '📄',
   },
   {
     title: 'Resumir Archivos TXT',
-    href: '/docs/primitives/typography',
+    href: '/dashboard',
     description:
-      'Resumir archivos TXT largos en puntos clave y transcribirlos a texto',
+      'Convierte textos largos en resúmenes concisos.',
     icon: '📄',
   },
 ];
@@ -119,7 +100,7 @@ export function Navigation() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
+          <Link href="/pricing" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Precios
             </NavigationMenuLink>
