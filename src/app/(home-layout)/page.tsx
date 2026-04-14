@@ -47,6 +47,38 @@ export default function HomePage() {
             <p className="text-muted-foreground">Haz preguntas directas a tus documentos o videos y obtén respuestas precisas basadas en el contenido.</p>
           </div>
         </section>
+
+        <section className="mt-32 max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold mb-12">Lo que dicen nuestros usuarios</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+            <div className="p-6 bg-muted/30 rounded-2xl italic">
+              &quot;SmartCript ha cambiado totalmente mi forma de estudiar. Puedo resumir una hora de clase en 5 minutos. ¡Increíble!&quot;
+              <p className="mt-4 font-bold not-italic">— Maria G., Estudiante de Medicina</p>
+            </div>
+            <div className="p-6 bg-muted/30 rounded-2xl italic">
+              &quot;La mejor inversión para mi productividad. El chat con IA me ayuda a encontrar datos específicos en PDFs de 100 páginas al instante.&quot;
+              <p className="mt-4 font-bold not-italic">— Juan P., Investigador</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="mt-32 mb-24 max-w-3xl mx-auto">
+          <h2 className="text-3xl font-bold mb-12 text-center">Preguntas Frecuentes</h2>
+          <div className="space-y-6 text-left">
+            <div className="border-b pb-4">
+              <h4 className="font-bold mb-2">¿Es realmente gratis?</h4>
+              <p className="text-muted-foreground">Sí, ofrecemos un plan gratuito generoso para que pruebes la potencia de nuestra IA.</p>
+            </div>
+            <div className="border-b pb-4">
+              <h4 className="font-bold mb-2">¿Qué formatos de archivo soportan?</h4>
+              <p className="text-muted-foreground">Soportamos PDF, Word (DOCX) y archivos de texto plano (TXT), además de videos de YouTube.</p>
+            </div>
+            <div className="border-b pb-4">
+              <h4 className="font-bold mb-2">¿Puedo cancelar mi suscripción?</h4>
+              <p className="text-muted-foreground">Por supuesto. Puedes cancelar tu suscripción en cualquier momento desde los ajustes de tu cuenta.</p>
+            </div>
+          </div>
+        </section>
       </div>
     </main>
   )

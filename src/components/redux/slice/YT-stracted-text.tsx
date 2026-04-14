@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface ExtractedTextState {
   link: string;
   transcription: [];
+  summary?: string;
   videoDetails: {
     title: string;
     author: string;
@@ -14,6 +15,7 @@ interface ExtractedTextState {
 const initialState: ExtractedTextState = {
   link: '',
   transcription: [],
+  summary: '',
   videoDetails: {
     title: '',
     author: '',
@@ -30,6 +32,7 @@ export const YTextractedTextSlice = createSlice({
       state.link = action.payload.link;
       state.transcription = action.payload.transcription;
       state.videoDetails = action.payload.videoDetails;
+      state.summary = action.payload.summary;
     },
 
     clearText: (state) => {
