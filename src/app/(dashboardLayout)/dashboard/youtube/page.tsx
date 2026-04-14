@@ -1,6 +1,7 @@
 'use client';
 
 import ShineBorder from "@/components/magicui/shine-border";
+import Image from "next/image";
 import ProfileDropdown from "@/components/project/navigation/profile-dropdown";
 import { TooltipElement } from "@/components/shadcn/tooltip";
 import { ThemeButton } from "@/components/theme/theme-button";
@@ -95,8 +96,8 @@ export default function YoutubePage() {
         <div className="mx-7 w-[500px]">
           <div className="sticky top-4 flex flex-col gap-2">
             <div className="relative">
-              <img src={videoDetails.thumbnails[0]} alt={videoDetails.title} className="rounded mt-2 w-[300px] ring-purple absolute top-0 -z-10 left-0  blur-3xl opacity-50 dark:opacity-30" />
-              <img src={videoDetails.thumbnails[3]} alt={videoDetails.title} className="rounded mt-2 w-[350px] ring-4 ring-purple z-20" />
+              <Image src={videoDetails.thumbnails[0]} alt={videoDetails.title} width={300} height={168} className="rounded mt-2 ring-purple absolute top-0 -z-10 left-0  blur-3xl opacity-50 dark:opacity-30" />
+              <Image src={videoDetails.thumbnails[3]} alt={videoDetails.title} width={350} height={196} className="rounded mt-2 ring-4 ring-purple z-20" />
             </div>
             <span className="mt-2">{videoDetails.description}</span>
 

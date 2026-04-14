@@ -3,11 +3,13 @@ import { createSlice } from "@reduxjs/toolkit";
 interface ExtractedTextState {
   text: string;
   type: 'PDF' | 'Word' | 'TXT';
+  summary?: string;
 }
 
 const initialState: ExtractedTextState = {
   text: '',
   type: 'PDF',
+  summary: '',
 };
 
 export const extractedTextSlice = createSlice({
@@ -17,6 +19,7 @@ export const extractedTextSlice = createSlice({
     setText: (state, action) => {
       state.text = action.payload.text;
       state.type = action.payload.type;
+      state.summary = action.payload.summary;
     },
 
     clearText: (state) => {

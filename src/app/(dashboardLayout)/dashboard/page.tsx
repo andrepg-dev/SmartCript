@@ -11,11 +11,20 @@ import ResumeCardFile from "@/components/dashboard/Resume-Card-File"
 import ResumeCard from "@/components/dashboard/Resume-Card-YouTube"
 import StatisticsCard from "@/components/dashboard/Statistics-Card"
 import Title from "@/components/dashboard/Title"
+import SummaryHistory from "@/components/dashboard/SummaryHistory"
+import SummaryResult from "@/components/dashboard/SummaryResult"
+import AIChat from "@/components/dashboard/AIChat"
+import { useAppSelector } from "@/hooks/redux"
 import { TooltipElement } from "@/components/shadcn/tooltip"
 import useUser from "@/hooks/user"
 
 export default function Dashboard() {
   const { user } = useUser()
+  const ytData = useAppSelector(state => state.YTextractedText)
+  const fileData = useAppSelector(state => state.extractedText)
+
+  const currentSummary = ytData.summary || fileData.summary;
+  const currentContext = ytData.summary ? ytData.summary : fileData.text;
 
   const accept = {
     pdf: { 'application/pdf': ['.pdf'] },
@@ -63,7 +72,8 @@ export default function Dashboard() {
         </Title>
 
 
-        <section className="grid grid-cols-2 mt-8 gap-6">
+        <section className="grid grid-cols-1 lg:grid-cols-3 mt-8 gap-6">
+          <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
           <ResumeCard
             Icon={Youtube}
             description="Resume y transcribe fácilmente tu video de YouTube: pega el enlace en el campo proporcionado y obtén un análisis completo."
@@ -89,7 +99,18 @@ en este campo."
             type="TXT"
             accept={accept.txt}
           />
+          </div>
+          <div className="lg:col-span-1">
+            <SummaryHistory />
+          </div>
         </section>
+
+        {currentSummary && (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <SummaryResult summary={currentSummary} />
+            <AIChat context={currentContext || ''} />
+          </div>
+        )}
       </div>
       <div className="px-6 py-8">
         <Title>Estadísticas</Title>

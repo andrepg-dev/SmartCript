@@ -22,7 +22,7 @@ export default function ResumeYouTubeCard({ Icon, title, description, className 
   const [ytUrl, setYtUrl] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [isValid, setIsValid] = useState<boolean>(false);
-  const [data, setData] = useState<any>()
+  const [compData, setCompData] = useState<any>()
   const { toast } = useToast();
 
   const [lastProcessedUrl, setLastProcessedUrl] = useState<string>("");
@@ -70,15 +70,15 @@ export default function ResumeYouTubeCard({ Icon, title, description, className 
 
   const handleClick = async ({ url }: { url: string }) => {
 
-    if (lastProcessedUrl === url && data.error) {
+    if (lastProcessedUrl === url && compData?.error) {
       return toast({
         variant: 'destructive',
         title: 'El video no tiene transcripción disponible.',
         description: (
           <div className="flex gap-2 mt-1">
-            <img src={data.videoDetails.thumbnails[1]} className="h-14 object-cover aspect-video rounded-md overflow-hidden"></img>
+            <img src={compData.videoDetails.thumbnails[1]} className="h-14 object-cover aspect-video rounded-md overflow-hidden"></img>
             <div className="flex flex-col gap-1">
-              <span>{data.videoDetails.author} - {data.videoDetails.title}</span>
+              <span>{compData.videoDetails.author} - {compData.videoDetails.title}</span>
               <span className="text-white/70 dark:text-foreground">Por favor, asegúrate de que el video tenga una transcripción disponible.</span>
             </div>
           </div>
@@ -107,45 +107,54 @@ export default function ResumeYouTubeCard({ Icon, title, description, className 
     const videoId = getVideoId(url).id;
     const res = await fetch(`/api/yt-transcript?videoId=${videoId}`);
 
-    await res.json().then((data) => {
-      setLoading(false)
-      // Set Data for errors
-      setData(data)
+    const data = await res.json();
+    setLoading(false)
+    // Set Data for errors
+    setCompData(data)
 
-      if (data.error) {
-        toast({
-          variant: 'destructive',
-          title: 'El video no tiene transcripción disponible.',
-          description: (
-            <div className="flex gap-2 mt-1">
-              <img src={data.videoDetails.thumbnails[1]} className="h-14 object-cover aspect-video rounded-md overflow-hidden"></img>
-              <div className="flex flex-col gap-1">
-                <span>{data.videoDetails.author} - {data.videoDetails.title}</span>
-                <span className="text-white/70 dark:text-foreground">Por favor, asegúrate de que el video tenga una transcripción disponible.</span>
-              </div>
+    if (data.error) {
+      toast({
+        variant: 'destructive',
+        title: 'El video no tiene transcripción disponible.',
+        description: (
+          <div className="flex gap-2 mt-1">
+            <img src={data.videoDetails.thumbnails[1]} className="h-14 object-cover aspect-video rounded-md overflow-hidden"></img>
+            <div className="flex flex-col gap-1">
+              <span>{data.videoDetails.author} - {data.videoDetails.title}</span>
+              <span className="text-white/70 dark:text-foreground">Por favor, asegúrate de que el video tenga una transcripción disponible.</span>
             </div>
-          )
-        })
-        // Close YT dialog
-        dispatch(closeYTDialog())
-        return
+          </div>
+        )
+      })
+      // Close YT dialog
+      dispatch(closeYTDialog())
+      return
+    }
+
+    const { videoDetails, transcription } = data;
+    const { title, author, description, thumbnails } = videoDetails;
+
+    const textToSummarize = transcription.map((item: any) => item.text).join(' ');
+
+    const resumeRes = await fetch('/api/resume', {
+      method: 'POST',
+      body: JSON.stringify({ text: textToSummarize, type: 'youtube' })
+    });
+
+    const resumeData = await resumeRes.json();
+
+    // Set text
+    dispatch(setText({
+      link: url,
+      transcription,
+      summary: resumeData.summary,
+      videoDetails: {
+        title,
+        author,
+        description,
+        thumbnails
       }
-
-      const { videoDetails, transcription } = data;
-      const { title, author, description, thumbnails } = videoDetails;
-
-      // Set text
-      dispatch(setText({
-        link: url,
-        transcription,
-        videoDetails: {
-          title,
-          author,
-          description,
-          thumbnails
-        }
-      }))
-    })
+    }))
   }
 
   return (

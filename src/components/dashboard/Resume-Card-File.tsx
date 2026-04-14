@@ -1,11 +1,13 @@
 'use client'
 import { Button } from "@/components/ui/button"
-import { CloudUpload, FileText } from "lucide-react"
+import { CloudUpload, FileText, Loader } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { ExtractText } from "@/services/transcript/files/extract_text"
 import { useState } from "react"
 import { Accept, useDropzone } from 'react-dropzone'
+import { useAppDispatch } from "@/hooks/redux"
+import { setText } from "../redux/slice/stracted-text"
 
 interface ResumeCardFileProps {
   title: string
@@ -17,6 +19,8 @@ interface ResumeCardFileProps {
 
 export default function ResumeCardFile({ accept, title, description, type, className }: ResumeCardFileProps) {
   const [file, setFile] = useState<File | null>(null)
+  const [loading, setLoading] = useState(false)
+  const dispatch = useAppDispatch()
 
   const {
     getRootProps,
@@ -30,7 +34,6 @@ export default function ResumeCardFile({ accept, title, description, type, class
       if (acceptedFiles.length > 0) {
         const file = acceptedFiles[0];
         setFile(file);
-        ExtractText(file, (text) => console.log({ text }));
       }
     },
   });
@@ -82,14 +85,29 @@ export default function ResumeCardFile({ accept, title, description, type, class
         </div>
       </div>
       <Button
-        onClick={(e) => {
+        onClick={async (e) => {
           e.stopPropagation()
-
+          if (!file) return;
+          setLoading(true);
+          await ExtractText(file, async (text) => {
+            const res = await fetch('/api/resume', {
+              method: 'POST',
+              body: JSON.stringify({ text, type: 'document' })
+            });
+            const data = await res.json();
+            dispatch(setText({ text, type, summary: data.summary }));
+            setLoading(false);
+          });
         }}
         className="mt-4"
-        disabled={isDragReject}
+        disabled={isDragReject || loading || !file}
         variant={file ? 'default' : 'secondary'}>
-        Resumir
+        {loading ? (
+          <>
+            <Loader className="size-4 mr-2 animate-spin" />
+            Resumiendo...
+          </>
+        ) : 'Resumir'}
       </Button>
     </div>
   )
