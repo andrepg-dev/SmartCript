@@ -11,8 +11,8 @@ import ReduxProvider from '@/components/redux/redux-provider';
 import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
-  title: 'SmartCript - Inicia sesión o regístrate',
-  description: 'Regístrate en SmartCript para acceder a una herramienta eficiente y sin costo que te permite resumir documentos en formatos PDF, Word, TXT, así como vídeos, de manera rápida y sencilla.',
+  title: 'SmartCript - Tu Asistente de Estudio con IA',
+  description: 'SmartCript te ayuda a resumir videos de YouTube, PDFs y documentos DOCX en segundos usando inteligencia artificial. Ahorra tiempo y mejora tu aprendizaje.',
 };
 
 export default function RootLayout({
