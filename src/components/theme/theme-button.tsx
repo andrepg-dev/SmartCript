@@ -10,7 +10,6 @@ import { TooltipElement } from "@/components/shadcn/tooltip"
 export function ThemeButton() {
   const { setTheme, resolvedTheme } = useTheme()
   const [mounted, setMounted] = React.useState(false)
-
   React.useEffect(() => {
     setMounted(true)
   }, [])
@@ -23,7 +22,7 @@ export function ThemeButton() {
 
   if (!mounted) {
     return (
-      <Button variant="outline" size="icon" className="aspect-square" disabled aria-hidden="true">
+      <Button variant="outline" size="icon" className="aspect-square" disabled aria-label="Cargando tema">
         <SunIcon className="h-[1.2rem] w-[1.2rem]" />
       </Button>
     )

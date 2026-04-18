@@ -1,3 +1,3 @@
-## 2024-05-20 - [Theme Button Accessibility & Hydration]
-**Learning:** Theme toggles in Next.js with `next-themes` require a `mounted` state to prevent hydration mismatches and flickering. Adding tooltips and ARIA labels to icon-only buttons like the theme toggle significantly improves accessibility for screen reader users and discoverability for all users.
-**Action:** Always use a `mounted` check for theme-related UI components and ensure icon-only buttons have descriptive labels and tooltips.
+## 2025-05-15 - [Accessibility and Hydration Safety in ThemeButton]
+**Learning:** In Next.js apps using 'next-themes', icon-only buttons like theme toggles require ARIA labels and Tooltips for accessibility, and a 'mounted' state check using useEffect to prevent hydration mismatches.
+**Action:** Always wrap icon-only buttons in TooltipElement and use a 'mounted' state check for theme-dependent components.
