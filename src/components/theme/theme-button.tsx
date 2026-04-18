@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import * as React from "react"
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons"
 import { useTheme } from "next-themes"
 
@@ -9,9 +9,10 @@ import { TooltipElement } from "@/components/shadcn/tooltip"
 
 export function ThemeButton() {
   const { setTheme, theme } = useTheme()
-  const [mounted, setMounted] = useState(false)
+  const [mounted, setMounted] = React.useState(false)
 
-  useEffect(() => {
+  // Avoid hydration mismatch by only rendering after mount
+  React.useEffect(() => {
     setMounted(true)
   }, [])
 
