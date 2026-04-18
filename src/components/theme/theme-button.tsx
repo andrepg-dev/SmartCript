@@ -10,6 +10,7 @@ import { TooltipElement } from "@/components/shadcn/tooltip"
 export function ThemeButton() {
   const { setTheme, resolvedTheme } = useTheme()
   const [mounted, setMounted] = React.useState(false)
+
   React.useEffect(() => {
     setMounted(true)
   }, [])
