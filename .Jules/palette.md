@@ -1,0 +1,3 @@
+## 2026-04-21 - Hydration-safe Theme Toggle with Accessibility
+**Learning:** Next.js apps using `next-themes` often suffer from hydration mismatches if the theme is accessed during initial render. Always use a `mounted` state check with `useEffect`. Additionally, icon-only buttons like theme toggles require explicit `aria-label` and tooltips for both accessibility and discoverability. Localizing these elements to the app's primary language (Spanish) ensures a consistent UX.
+**Action:** Always wrap theme-dependent logic in a `mounted` check and provide localized tooltips/aria-labels for icon buttons.
